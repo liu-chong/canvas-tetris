@@ -2,19 +2,40 @@ var COLS = 10, ROWS = 20;
 var board = [];
 var current, currentX, currentY;
 var shapes = [
-    [ 1, 1, 1, 1 ],
-    [ 1, 1, 1, 0,
-      1 ],
-    [ 1, 1, 1, 0,
-      0, 0, 1 ],
-    [ 1, 1, 0, 0,
-      1, 1 ],
-    [ 1, 1, 0, 0,
-      0, 1, 1 ],
-    [ 0, 1, 1, 0,
-      1, 1 ],
-    [ 0, 1, 0, 0,
-      1, 1, 1 ]
+    [ [ 0, 0, 0, 0 ],
+      [ 1, 1, 1, 1 ],
+      [ 0, 0, 0, 0 ],
+      [ 0, 0, 0, 0 ] ],
+
+    [ [ 0, 0, 0, 0 ],
+      [ 0, 2, 2, 2 ],
+      [ 0, 2, 0, 0 ],
+      [ 0, 0, 0, 0 ] ],
+
+    [ [ 0, 0, 0, 0 ],
+      [ 0, 3, 3, 3 ],
+      [ 0, 0, 0, 3 ],
+      [ 0, 0, 0, 0 ] ],
+
+    [ [ 0, 0, 0, 0 ],
+      [ 0, 4, 4, 0 ],
+      [ 0, 4, 4, 0 ],
+      [ 0, 0, 0, 0 ] ],
+
+    [ [ 0, 0, 0, 0 ],
+      [ 0, 5, 5, 0 ],
+      [ 0, 0, 5, 5 ],
+      [ 0, 0, 0, 0 ] ],
+
+    [ [ 0, 0, 0, 0 ],
+      [ 0, 0, 6, 6 ],
+      [ 0, 6, 6, 0 ],
+      [ 0, 0, 0, 0 ] ],
+
+    [ [ 0, 0, 0, 0 ],
+      [ 0, 0, 7, 0 ],
+      [ 0, 7, 7, 7 ],
+      [ 0, 0, 0, 0 ] ]
 ];
 var colors = [
     'cyan', 'orange', 'blue', 'yellow', 'red', 'green', 'purple'
@@ -22,21 +43,9 @@ var colors = [
 
 function newShape() {
   var id = Math.floor(Math.random() * shapes.length);
-  var shape = shapes[id];
-
-  current = [];
-  for (var y = 0; y < 4; ++y) {
-    current[y] = [];
-    for (var x = 0; x < 4; ++x) {
-      var i = 4 * y + x;
-      if (typeof shape[i] != 'undefined' && shape[i])
-        current[y][x] = id + 1;
-      else
-        current[ y ][ x ] = 0;
-    }
-  }
-  currentX = 5;
-  currentY = 0;
+  current = shapes[id];
+  currentX = 4;
+  currentY = -1;
 }
 
 function init() {
@@ -92,7 +101,6 @@ function clearLines() {
 }
 
 function keyPress(key) {
-  console.log(key);
   switch (key) {
   case "left":
     if (valid(-1)) --currentX;
