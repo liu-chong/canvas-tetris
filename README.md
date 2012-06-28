@@ -1,10 +1,7 @@
-A very simple HTML5 version of Tetris, for educational purposes, made in 45 minutes.
-
-Watch the making-of timelapse:
-http://www.youtube.com/watch?v=GQTZ_TPxJhM
+A very simple HTML5 version of Tetris, for educational purposes.
 
 Play:
-http://dionyziz.logimus.com/tetris/
+https://www.liuchong.us/tetris/
 
 License
 =======
